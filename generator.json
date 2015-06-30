@@ -1,0 +1,73 @@
+{
+	"baseName": "chatapp",
+	"packageName": "com.barbu.chat",
+	"entities": [
+		{
+			"name": "TestEntity",
+			"attrs": [
+				{
+					"attrName": "name",
+					"attrType": "String",
+					"minLength": "",
+					"maxLength": "",
+					"enumValues": [],
+					"required": true
+				},
+				{
+					"attrName": "time",
+					"attrType": "Date",
+					"dateConstraint": "",
+					"enumValues": [],
+					"required": true
+				}
+			]
+		},
+		{
+			"name": "Room",
+			"attrs": [
+				{
+					"attrName": "name",
+					"attrType": "String",
+					"minLength": "",
+					"maxLength": "",
+					"enumValues": [],
+					"required": true
+				},
+				{
+					"attrName": "messages",
+					"attrType": "String",
+					"minLength": "",
+					"maxLength": "",
+					"enumValues": [],
+					"required": false
+				}
+			]
+		}
+	],
+	"resources": [
+		{
+			"name": "test",
+			"methods": [
+				{
+					"methodName": "mymethod",
+					"methodType": "POST",
+					"methodPath": "/join",
+					"formParams": [
+						"user",
+						"room"
+					]
+				},
+				{
+					"methodName": "sendMessage",
+					"methodType": "POST",
+					"methodPath": "/sendMessage",
+					"formParams": [
+						"user",
+						"room",
+						"message"
+					]
+				}
+			]
+		}
+	]
+}

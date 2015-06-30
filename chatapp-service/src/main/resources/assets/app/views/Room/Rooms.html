@@ -1,0 +1,128 @@
+<div>
+
+    <h2>Rooms</h2>
+
+    <script type = "text/ng-template" id="Room-save.html">
+        <form name="form" role="form" novalidate
+              class="ng-scope ng-invalid ng-invalid-required ng-dirty"
+              ng-submit="ok()">
+
+            <div class="modal-header">
+                <button type="button" class="close"
+                        ng-click="cancel()">&times;</button>
+                <h4 class="modal-title" id="myRoomLabel">Create a new Room</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>ID</label>
+                    <input type="text" class="form-control" name="id"
+                           ng-model="Room.id" readonly>
+                </div>
+
+
+                <div class="form-group">
+                    <label>NAME</label>
+
+                    <input type="text" class="form-control" name="name"
+                           ng-model="Room.name" ng-required="true"
+                           />
+                    <span class="error" ng-show="form.name.$error.minlength">Must be at least  characters.</span>
+                    <span class="error" ng-show="form.name.$error.maxlength">Must be at most  characters.</span>
+                </div>
+
+                <!--<div class="form-group">
+                    <label>messages:</label>
+
+                    <input type="text" class="form-control" name="messages"
+                           ng-model="Room.messages" ng-required="false"
+                           />
+                    <span class="error" ng-show="form.messages.$error.minlength">Must be at least  characters.</span>
+                    <span class="error" ng-show="form.messages.$error.maxlength">Must be at most  characters.</span>
+                </div>-->
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" ng-click="cancel()">Cancel
+                </button>
+                <button type="submit" ng-disabled="form.$invalid" class="btn btn-primary">Save</button>
+            </div>
+        </form>
+    </script>
+
+    <script type = "text/ng-template" id="Room-join.html">
+        <form name="formJoin" role="form" novalidate
+              class="ng-scope ng-invalid ng-invalid-required ng-dirty"
+              ng-submit="ok(nickname)">
+
+            <div class="modal-header">
+                <button type="button" class="close"
+                        ng-click="cancel()">&times;</button>
+                <h4 class="modal-title">Join to a Room <b>{{Room.name}}</b></h4>
+            </div>
+            <div class="modal-body">
+
+                <div class="form-group">
+                    <label>NickName</label>
+
+                    <input type="text" class="form-control" name="nickname"
+                           ng-model="nickname" ng-required="true"
+                        />
+                    <span class="error" ng-show="formJoin.nickname.$error.minlength">Must be at least  characters.</span>
+                    <span class="error" ng-show="formJoin.nickname.$error.maxlength">Must be at most  characters.</span>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" ng-click="cancel()">Cancel
+                </button>
+                <button type="submit" ng-disabled="formJoin.$invalid" class="btn btn-primary">Join</button>
+            </div>
+        </form>
+    </script>
+
+    <button class="btn btn-primary btn-lg" ng-click="create()">
+        <span class="glyphicon glyphicon-flash"></span> Create a new Room
+    </button>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>ID</th>
+
+                <th>name</th>
+
+                <!--<th>messages</th>-->
+
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="Room in Rooms">
+                <td>{{Room.id}}</td>
+
+                <td>{{Room.name }}</td>
+
+                <!--<td>{{Room.messages }}</td>-->
+
+                <td>
+                    <!--<button type="submit"
+                            ng-click="update(Room.id)"
+                            class="btn">
+                        <span class="glyphicon glyphicon-pencil"></span> Edit
+                    </button>-->
+                    <!--<button type="submit"
+                            ng-click="delete(Room.id)"
+                            class="btn btn-danger">
+                        <span class="glyphicon glyphicon-remove-circle"></span> Delete
+                    </button>-->
+                    <button type="submit"
+                            ng-click="join(Room.id)"
+                            class="btn btn-primary">
+                        <span class="glyphicon glyphicon-check"></span> Join
+                    </button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
