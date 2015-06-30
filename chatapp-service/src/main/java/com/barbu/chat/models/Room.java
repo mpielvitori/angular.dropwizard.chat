@@ -12,31 +12,26 @@ public class Room {
     @GeneratedValue
     private long id;
 
-    
+
     @NotNull
     @Column(name = "name")
-    
-    
-    
-    
-    
+
+
+
+
+
     private String name;
-    
-    
+
+
     @Column(name = "messages")
-    
-    
-    
-    
-    
     private String messages;
-    
+
 
     public long getId() {
         return id;
     }
 
-    
+
     public String getName() {
         return name;
     }
@@ -44,15 +39,17 @@ public class Room {
     public void setName(String name) {
         this.name = name;
     }
-    
+
+    @Deprecated
     public String getMessages() {
         return messages;
     }
 
+    @Deprecated
     public void setMessages(String messages) {
         this.messages = messages;
     }
-    
+
 
     @Override
     public boolean equals(Object o) {

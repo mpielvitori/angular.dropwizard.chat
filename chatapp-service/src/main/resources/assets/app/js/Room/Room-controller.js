@@ -84,7 +84,7 @@ angular.module('chatapp')
             });
             RoomJoin.result.then(function (nickname) {
                 //alert("param "+nickname+"-"+id);
-                $location.path('/ChatRoom');
+                $location.path('/ChatRoom/'+id+"/"+nickname);
             });
         };
     }])
