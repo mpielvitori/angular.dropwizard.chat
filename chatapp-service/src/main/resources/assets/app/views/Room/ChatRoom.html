@@ -1,6 +1,44 @@
 <div>
 
-    <h2>Room {{Room.name}}</h2>
-    {{nickname}}
+    <h2>Room {{room.name}}</h2>
+    <h3>NickName {{nickname}}</h3>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>User</th>
+                <th>Time</th>
+                <th>Message</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="message in messages">
+                <td>{{message.nickname}}</td>
+                <td>{{message.time}}</td>
+                <td>{{message.message}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <form name="form" role="form" novalidate
+          class="ng-scope ng-invalid ng-invalid-required ng-dirty"
+          ng-submit="sendMessage(newMessage)">
+
+        <div class="form-group">
+            <label>New message</label>
+
+            <input type="text" class="form-control" name="message"
+                   ng-model="newMessage" ng-required="true"
+                />
+            <span class="error" ng-show="form.message.$error.minlength">Must be at least  characters.</span>
+            <span class="error" ng-show="form.message.$error.maxlength">Must be at most  characters.</span>
+        </div>
+
+        <div class="modal-footer">
+            <button type="submit" ng-disabled="form.$invalid" class="btn btn-primary">Send</button>
+        </div>
+    </form>
 
 </div>

@@ -32,6 +32,7 @@ public class ChatappService extends Application<ChatappConfiguration> {
             
             TestEntity.class,
             Room.class,
+            Message.class,
             Void.class
         ) {
         @Override
@@ -65,5 +66,7 @@ public class ChatappService extends Application<ChatappConfiguration> {
             new TestEntityDAO(hibernateBundle.getSessionFactory())));
         environment.jersey().register(new RoomResource(
             new RoomDAO(hibernateBundle.getSessionFactory())));
+        environment.jersey().register(new MessageResource(
+            new MessageDAO(hibernateBundle.getSessionFactory())));
     }
 }

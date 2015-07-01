@@ -42,6 +42,42 @@
 					"required": false
 				}
 			]
+		},
+		{
+			"name": "Message",
+			"attrs": [
+				{
+					"attrName": "message",
+					"attrType": "String",
+					"minLength": "",
+					"maxLength": "",
+					"enumValues": [],
+					"required": true
+				},
+				{
+					"attrName": "nickname",
+					"attrType": "String",
+					"minLength": "",
+					"maxLength": "",
+					"enumValues": [],
+					"required": true
+				},
+				{
+					"attrName": "room",
+					"attrType": "Integer",
+					"min": "1",
+					"max": "",
+					"enumValues": [],
+					"required": true
+				},
+				{
+					"attrName": "time",
+					"attrType": "DateTime",
+					"dateConstraint": "",
+					"enumValues": [],
+					"required": true
+				}
+			]
 		}
 	],
 	"resources": [

@@ -2,7 +2,6 @@ package com.barbu.chat.models;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
-import org.joda.time.LocalDate;
 
 @Entity
 @Table(name = "Rooms")

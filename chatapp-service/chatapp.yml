@@ -3,7 +3,7 @@ sampleProperty: hello!
 # Database settings.
 database:
   driverClass: org.apache.derby.jdbc.EmbeddedDriver
-  url: jdbc:derby:/tmp/mydb;create=true
+  url: jdbc:derby:/tmp/mychatdb;create=true
   user: admin
   password: admin
   minSize: 8
@@ -73,7 +73,7 @@ logging:
     - type: console
     - type: file
       # The file to which current statements will be logged.
-      currentLogFilename: /var/log/chatapp/chatapp.log
+      currentLogFilename: /home/martin/workspaceWebstorm/Pruebas/logs/chatapp.log
 
       # When the log file rotates, the archived log will be renamed to this and gzipped. The
       # %d is replaced with the previous day (yyyy-MM-dd). Custom rolling windows can be created
