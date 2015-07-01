@@ -1,0 +1,118 @@
+<div>
+
+    <h2>Messages</h2>
+
+    <script type = "text/ng-template" id="Message-save.html">
+        <form name="form" role="form" novalidate
+              class="ng-scope ng-invalid ng-invalid-required ng-dirty"
+              ng-submit="ok()">
+
+            <div class="modal-header">
+                <button type="button" class="close"
+                        ng-click="cancel()">&times;</button>
+                <h4 class="modal-title" id="myMessageLabel">Create or edit a Message</h4>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>ID</label>
+                    <input type="text" class="form-control" name="id"
+                           ng-model="Message.id" readonly>
+                </div>
+
+                
+                <div class="form-group">
+                    <label>message:</label>
+                    
+                    <input type="text" class="form-control" name="message"
+                           ng-model="Message.message" ng-required="true"
+                           />
+                    <span class="error" ng-show="form.message.$error.minlength">Must be at least  characters.</span>
+                    <span class="error" ng-show="form.message.$error.maxlength">Must be at most  characters.</span>
+                </div>
+                
+                <div class="form-group">
+                    <label>nickname:</label>
+                    
+                    <input type="text" class="form-control" name="nickname"
+                           ng-model="Message.nickname" ng-required="true"
+                           />
+                    <span class="error" ng-show="form.nickname.$error.minlength">Must be at least  characters.</span>
+                    <span class="error" ng-show="form.nickname.$error.maxlength">Must be at most  characters.</span>
+                </div>
+                
+                <div class="form-group">
+                    <label>room:</label>
+                    
+                    <input type="number" class="form-control" name="room"
+                           ng-model="Message.room" ng-required="true"
+                           min=1 />
+                    <span class="error" ng-show="form.room.$error.min">Must be greater than or equal to 1.</span>
+                    <span class="error" ng-show="form.room.$error.max">Must be less than or equal to .</span>
+                </div>
+                
+                <div class="form-group">
+                    <label>time:</label>
+                    
+                    <input type="text" class="form-control" name="time" ui-date="timeDateOptions" ui-date-format="yy-mm-dd" 
+                           ng-model="Message.time" ng-required="true"/>
+                </div>
+                
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" ng-click="cancel()">Cancel
+                </button>
+                <button type="submit" ng-disabled="form.$invalid" class="btn btn-primary">Save</button>
+            </div>
+        </form>
+    </script>
+
+    <button class="btn btn-primary btn-lg" ng-click="create()">
+        <span class="glyphicon glyphicon-flash"></span> Create a new Message
+    </button>
+
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead>
+            <tr>
+                <th>ID</th>
+                
+                <th>message</th>
+                
+                <th>nickname</th>
+                
+                <th>room</th>
+                
+                <th>time</th>
+                
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="Message in Messages">
+                <td>{{Message.id}}</td>
+                
+                <td>{{Message.message }}</td>
+                
+                <td>{{Message.nickname }}</td>
+                
+                <td>{{Message.room }}</td>
+                
+                <td>{{Message.time  | date:'yyyy-MM-dd'}}</td>
+                
+                <td>
+                    <button type="submit"
+                            ng-click="update(Message.id)"
+                            class="btn">
+                        <span class="glyphicon glyphicon-pencil"></span> Edit
+                    </button>
+                    <button type="submit"
+                            ng-click="delete(Message.id)"
+                            class="btn btn-danger">
+                        <span class="glyphicon glyphicon-remove-circle"></span> Delete
+                    </button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
