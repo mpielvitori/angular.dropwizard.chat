@@ -1,9 +1,9 @@
-<div data-ng-init="init()">
+<div data-ng-init="init()"  style="min-height: 600px; max-height: 600px;">
 
     <h2>Room {{room.name}}</h2>
-    <h3>NickName {{nickname}}</h3>
+    <h3>NickName {{nickname}}</h3><p>{{login | date: "M/d/yy h:mm:ss a"}}</p>
 
-    <div class="table-responsive">
+    <div class="table-responsive" >
         <table class="table table-striped">
             <thead>
             <tr>
@@ -15,7 +15,7 @@
             <tbody>
             <tr ng-repeat="message in messages">
                 <td>{{message.nickname}}</td>
-                <td>{{message.time}}</td>
+                <td>{{message.time | date: "M/d/yy h:mm:ss a"}}</td>
                 <td>{{message.message}}</td>
             </tr>
             </tbody>
