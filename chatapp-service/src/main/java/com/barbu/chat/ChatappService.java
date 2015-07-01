@@ -29,7 +29,7 @@ public class ChatappService extends Application<ChatappConfiguration> {
     }
 
     private final HibernateBundle<ChatappConfiguration> hibernateBundle = new HibernateBundle<ChatappConfiguration>(
-            
+
             TestEntity.class,
             Room.class,
             Message.class,
@@ -58,12 +58,12 @@ public class ChatappService extends Application<ChatappConfiguration> {
     public void run(ChatappConfiguration configuration,
                     Environment environment) throws Exception {
         environment.jersey().setUrlPattern("/chatapp/*");
-        
-        
+
+
         environment.jersey().register(new TestResource());
-        
+
         environment.jersey().register(new TestEntityResource(
-            new TestEntityDAO(hibernateBundle.getSessionFactory())));
+            new MessageDAO(hibernateBundle.getSessionFactory())));
         environment.jersey().register(new RoomResource(
             new RoomDAO(hibernateBundle.getSessionFactory())));
         environment.jersey().register(new MessageResource(

@@ -1,14 +1,16 @@
 'use strict';
 
 angular.module('chatapp')
-  .controller('ChatRoomController', ['$scope', '$modal', 'Room', '$routeParams','Message',
-    function ($scope, $modal, Room, $routeParams, Message) {
-        $scope.room = Room.get({id: $routeParams.idRoom});
-        $scope.messages = Message.query();//{room: $routeParams.idRoom});
-        $scope.nickname = $routeParams.nickname;
+  .controller('ChatRoomController', ['$scope', '$modal', 'Room', '$routeParams','Message', 'ChatRoom', 'TestEntity',
+    function ($scope, $modal, Room, $routeParams, Message, ChatRoom, TestEntity) {
+
+        $scope.init = function() {
+            $scope.room = Room.get({id: $routeParams.idRoom});
+            $scope.messages = TestEntity.get({id: $routeParams.idRoom});
+            $scope.nickname = $routeParams.nickname;
+        }
 
         $scope.sendMessage = function (message) {
-            alert("ahora "+Date.now());
             var newMessage = {
 
                 "message": message,
@@ -21,7 +23,7 @@ angular.module('chatapp')
             };
             Message.save(newMessage,
                 function () {
-                    $scope.messages = Message.query();//{room: $routeParams.idRoom});
+                    $scope.messages = TestEntity.get({id: $scope.room.id});
                 });
         };
     }]);
